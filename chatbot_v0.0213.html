@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chat Bot</title>
+</head>
+<body>
+
+<!-- 
+This is where the conversation is displayed 
+-->
+
+<p id=convoText> 
+
+</p>
+
+<script>
+
+//Outline for Artificial Intelligence Chat Bot
+
+//Components of a Conversation:
+// 1. Greeting
+// 2. Topic of Discussion
+// 3. Asking a Question
+// 4. Answering a Question
+// 5. Changing a Topic
+// 6. Personality of the Conversant
+// 7. Mood of the Conversant
+// 8. Physical Characteristics of Conversant
+// 9. Dreams and Goals of Conversant
+// 10. Life History of Conversant
+// 11. Goodbye
+// 12. Facts About the World
+// 13. Irony, Satire, Hyperbole, Pun, Alliteration, // Metaphor, Analogy
+// 14. Dark Humor, Light Humor
+// 15. Confusion, Boredom, Misunderstanding
+// 16. Angst, Frustration, Dread, Fear, Lust, 
+// Obsession, Greed, Envy, Sloth, Wisdom, Oblivion
+// Sympathy, Apathy, Impatience, Contentment,
+// Agreement, Disagreement, Serious, Sarcastic,
+// Friendly, Hostile, Good, Evil, Liar, Truther,
+// Manipulator, Down-To-Earth, Angry, Happy, Upset
+// Depressed, Elated, Bipolar, Tempremental,
+// Easy-Going, Talkative, Quiet, Shy, Nosy,
+// Respectful, Distant, Close, Focused, Distracted,
+// Dreamer, Realist
+//
+// Component 1: Greeting
+// Standard Greeting Variations (formal):
+// Hi, Hello, How's it going?, How are you?, Can I
+// help you?, Good day, Good morning, Good // afternoon, Good evening, Hey, Hey there, Hey // you, Howdy
+// Standard Greeting Variations (colloquial):
+// What's up?, What's up dude?, What's up brother?, 
+// What's up man?, Yo, How's it hanging?, Hi ya
+// Standard Greeting Variations (servant):
+// How can I be of service?
+//
+// Code:
+var greetingType = Math.floor(Math.random() * 3);
+var greetingList;
+if (greetingType === 0) {
+ 	greetingList = ["Hi!", "Hello!", "How's it going?", "How are you?", "Can I help you?", "Good day!", "Good morning!", "Good afternoon!", "Good evening!", "Hey!", "Hey there!", "Hey you!", "Howdy!"];
+} else if (greetingType === 1) {
+ 	greetingList = ["What's up?", "What's up dude?", "What's up brother?", "What's up man?", "Yo!", "How's it hanging?", "Hi ya!"];
+} else {
+	greetingList = ["How can I be of service?"];
+}
+// Component 1.1: Response to Greeting
+// Standard Response Variations (formal):
+// Hi. I'm good. How are you?, I'm good. How are 
+// you?, Hi. I'm great. How are you?, I'm doing
+// fantastic. What about you?, I'm living the
+// dream. How about you?, I'm doing good. How was
+// your day?, Great. How was your day?, Not bad.
+// Could be better. And you?, I'm doing terrific.
+// What about yourself?, Same as always. Could be
+// worse I guess. Tell me about yourself
+// Standard Response Variations (colloquial):
+// It's going. What's up with you?, Happy as a 
+// clam. What's up brother?
+// Sandard Response Variations (servant):
+// Do my bidding, minion!
+var responseType = greetingType;
+var responseList;
+
+if (responseType === 0) {
+	responseList = ["Hi! I'm good! How are you?", "I'm good! How are you?", "Hi! I'm great! How are you?", "I'm doing fantastic! What about you?", "I'm living the dream! How about you?", "I'm doing good! How was your day?", "Great! How was your day?", "Not bad! Could be better! And you?", "I'm doing terrific! What about yourself?", "Same as always. Could be worse I guess... Tell me about yourself."];
+} else if (responseType === 1) {
+	responseList = ["It's going... What's up with you?", "Happy as a clam! What's up brother?"];
+} else {
+	responseList = ["Do my bidding, minion!"];
+}
+//
+// Component 2: Topic of Discussion
+// Standard Discussion Topics:
+// Weather, Politics, Celebrity, Movie, TV Show,
+// Book, Sports, Food
+// Topic 1: Weather - Question
+// Are you enjoying the weather lately?, How about
+// the weather these days, eh?, This weather is 
+// bumming me out!, I wish it was warmer!, I wish
+// it wasn't so hot!, We're getting too much rain!,
+// This weather is too dry!, This weather is too
+// humid!
+// Topic 2: Politics - Question
+// Politician A is an idiot!, What's your opinion
+// on Politician A?, I wish Politician A was in 
+// office.
+// Topic 3: Celebrity - Question
+// Did you hear what Celebrity A said?, What do you
+// think about Celebrity A?, I am in love with 
+// Celebrity A!, Celebrity A can have my babies!
+// Topic 4: Movie - Question
+// Did you see the new movie Movie A?, Movie A was
+// soooo good!, I want to go see Movie A!, What
+// do you think about the new movie Movie A?
+// Topic 5: TV Show - Question
+// Did you see the series finale of TV Show A?, The
+// series finale of TV Show A was amazing!, The 
+// series finale of TV Show A was such a letdown!,
+// Are you going to watch the series finale of TV
+// Show A tonight?
+// Topic 6: Book - Question
+// Did you read the new book by Author A?, What do
+// you think about Book A?, I can't stop reading
+// Book A!, Please don't give me any spoilers about 
+// Book A!, I think Book B is wayyyy better than 
+// Book A...
+// Topic 7: Sports - Question
+// Team A won!, Team A should've won!, Team B
+// destroyed Team A!, Team B could kick Team A's
+// butt!, Are you a Team A fan?, You'd better not
+// be a Team A fan!, Are you wearing a Team A 
+// jersey?, Are you wearing a Team A hat?, Are you
+// gonna go watch Team A versus Team B next 
+// Saturday?
+// Topic 8: Food - Question
+// Have you tried the new Food A from Store A?,
+// The new Food A from Store A is soooo good!, You
+// HAVE to try the new Food A from Store A!, Are 
+// you a fan of Food A?, The new Food A is 
+// Ingredient A free!, I'm craving some Food A 
+// right now...
+var discussion = Math.floor(Math.random() * 8);
+var discussionList;
+
+if (discussion === 0) {
+	var str00 = "Are you enjoying the weather lately?";
+	var str01 = "How about the weather these days, eh?";
+	var str02 = "This weather is bumming me out!";
+	var str03 = "I wish it was warmer!";
+	var str04 = "I wish it wasn't so hot!";
+	
+	discussionList = [str00, str01, str02, str03, str04];
+} else if (discussion === 1) {
+	var str00 = "Politician A is an idiot!";
+	var str01 = "What's your opinion on Politician A?";
+	var str02 = "I wish Politician A was in office.";
+	discussionList = [str00, str01, str02];
+} else if (discussion === 2) {
+	var str00 = "Did you hear what Celebrity A said?";
+	var str01 = "What do you think about Celebrity A?";
+	var str02 = "I am in love with Celebrity A!";
+	var str03 = "Celebrity A can have my babies!";
+	discussionList = [str00, str01, str02, str03];
+} else if (discussion === 3) {
+	var str00 = "Did you see the new movie Movie A?";
+	var str01 = "Movie A was soooo good!";
+	var str02 = "I want to go see Movie A!";
+	var str03 = "What do you think about the new movie Movie A?";
+	discussionList = [str00, str01, str02, str03];
+} else if (discussion === 4) {
+	var str00 = "Did you see the series finale of TV Show A?";
+	var str01 = "The series finale of TV Show A was amazing!";
+	var str02 = "The series finale of TV Show A was such a letdown!";
+	var str03 = "Are you going to watch the series finale of TV Show A tonight?";
+	discussionList = [str00, str01, str02, str03];
+} else if (discussion === 5) {
+	var str00 = "Did you read the new book by Author A?";
+	var str01 = "What do you think about Book A?";
+	var str02 = "I can't stop reading Book A!";
+	var str03 = "Please don't give me any spoilers about Book A!";
+	var str04 = "I think Book B is wayyyy better than Book A...";
+	discussionList = [str00, str01, str02, str03, str04];
+} else if (discussion === 6) {
+	var str00 = "Team A won!";
+	var str01 = "Team A should've won!";
+	var str02 = "Team B destroyed Team A!";
+	var str03 = "Team B could kick Team A's butt!, Are you a Team A fan?";
+	var str04 = "You'd better not be a Team A fan!";
+	discussionList = [str00, str01, str02, str03, str04];
+} else if (discussion === 7) {
+	var str00 = "Have you tried the new Food A from Store A?";
+	var str01 = "The new Food A from Store A is soooo good!";
+	var str02 = "You HAVE to try the new Food A from Store A!";
+	var str03 = "Are you a fan of Food A?";
+	var str04 = "The new Food A is Ingredient A free!";
+	discussionList = [str00, str01, str02, str03, str04];
+} else {
+	discussionList = ["Cool!"];
+}
+//Component 2.1: Discussion Response
+// Topic 1: Weather - Response
+// The weather has been pretty nice in my opinion., The weather has been better in past years., I just wish it didn't rain so much!, I can't wait for summer already!, I might invest in a humidifier.
+// Topic 2: Politics - Response
+// Did you vote for Politician A?, I think Politician A is a liar!, I wouldn't trust Politician A for a second!, I hope Politician A doesn't get a second term in office!, Taxes are too high!, I wish Politician A did more about the environment!
+// Topic 3: Celebrity - Response
+// Celebrity A and Celebrity B are getting // married!, Celebrity A just had a baby!, // Celebrity A is so much better than Celebrity B!,
+// I only liked Celebrity A in Movie A, Celebrity A 
+// is annoying!, Celebrity A is ridiculously // overpaid!
+// Topic 4: Movie - Response
+// Movie A was awesome!, I'm going to see Movie A 
+// again!, I saw Movie A with my friend!, What's 
+// Movie A?, Ew, Actor A is in Movie A!
+// Topic 5: TV Show - Question
+// I heard that Celebrity A watched Dictator A // speeches for inspiration, There are way too many 
+// plotholes left unanswered in the series finale // of TV Show A, I honestly don't know what to do 
+// with my life now that TV Show A has ended, I 
+// didn't watch a single episode of TV Show A, TV 
+// Show B is a lot better than TV Show A
+// Topic 6: Book - Response
+// Book A was definitely better than the movie!, 
+// Main Character A dies in Book A., Book B is a 
+// cheap ripoff of Book C!, I'm still reading book 
+// A, I think Book A took a long time on character 
+// development before actually getting to the good 
+// parts, but it was well worth wait.
+// Topic 7: Sports - Response
+// I'm gonna go watch Team A with some friends., 
+// Honestly I'm more of a Team C fan., I hope Team 
+// A makes it to the playoffs!, I can't remember 
+// the last time Time A won the Contest A, I'm from 
+// City A so I'm more of a Team C fan.
+// Topic 8: Food - Response
+// The new Food A tastes gross!, Food A just // doesn't taste the same without Ingredient A!, // "I'm craving Food B, Food C, and some Food D!", // "Store B sells Food B, which is basically Food A 
+// but healthier and cheaper", I've never been a // fan of Food A., I'm allergic to Food A.
+var discussionList2;
+
+if (discussion === 0) {
+	var str00 = "The weather has been pretty nice in my opinion.";
+	var str01 = "The weather has been better in past years.";
+	var str02 = "I just wish it didn't rain so much!";
+	var str03 = "I can't wait for summer already!";
+	var str04 = "I might invest in a humidifier.";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 1) {
+	var str00 = "Did you vote for Politician A?";
+	var str01 = "I think Politician A is a liar!";
+	var str02 = "I wouldn't trust Politician A for a second!";
+	var str03 = "I hope Politician A doesn't get a second term in office!";
+	var str04 = "Taxes are too high!";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 2) {
+	var str00 = "Celebrity A and Celebrity B are getting married!";
+	var str01 = "Celebrity A just had a baby!";
+	var str02 = "Celebrity A is so much better than Celebrity B!";
+	var str03 = "I only liked Celebrity A in Movie A";
+	var str04 = "Celebrity A is annoying!"
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 3) {
+	var str00 = "Movie A was awesome!";
+	var str01 = "I'm going to see Movie A again!";
+	var str02 = "I saw Movie A with my friend!";
+	var str03 = "What's Movie A?";
+	var str04 = "Ew, Actor A is in Movie A!";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 4) {
+	var str00 = "I heard that Celebrity A watched Dictator A speeches for inspiration";
+	var str01 = "There are way too many plotholes left unanswered in the series finale of TV Show A";
+	var str02 = "I honestly don't know what to do with my life now that TV Show A has ended";
+	var str03 = "I didn't watch a single episode of TV Show A";
+	var str04 = "TV Show B is a lot better than TV Show A";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 5) {
+	var str00 = "Book A was definitely better than the movie!";
+	var str01 = "Main Character A dies in Book A.";
+	var str02 = "Book B is a cheap ripoff of Book C!";
+	var str03 = "I'm still reading book A";
+	var str04 = "I think Book A took a long time on character development before actually getting to the good parts, but it was well worth wait.";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 6) {
+	var str00 = "I'm gonna go watch Team A with some friends.";
+	var str01 = "Honestly I'm more of a Team C fan.";
+	var str02 = "I hope Team A makes it to the playoffs!";
+	var str03 = "I can't remember the last time Time A won the Contest A";
+	var str04 = "I'm from City A so I'm more of a Team C fan.";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else if (discussion === 7) {
+	var str00 = "The new Food A tastes gross!";
+	var str01 = "Food A just doesn't taste the same without Ingredient A!";
+	var str02 = "I'm craving Food B, Food C, and some Food D!";
+	var str03 = "Store B sells Food B, which is basically Food A but healthier and cheaper";
+	var str04 = "I've never been a fan of Food A.";
+	discussionList2 = [str00, str01, str02, str03, str04];
+} else {
+	discussionList2 = ["Cool!"];
+}
+// Component 2.2: Topic Change
+// The same topics and sentences from before, 
+// remixed. 
+var discussion2 = Math.floor(Math.random() * 8);
+var discussionList3;
+
+if (discussion2 === 0) {
+	var str00 = "Are you enjoying the weather lately?";
+	var str01 = "How about the weather these days, eh?";
+	var str02 = "This weather is bumming me out!";
+	var str03 = "I wish it was warmer!";
+	var str04 = "I wish it wasn't so hot!";
+	
+	discussionList3 = [str00, str01, str02, str03, str04];
+} else if (discussion2 === 1) {
+	var str00 = "Politician A is an idiot!";
+	var str01 = "What's your opinion on Politician A?";
+	var str02 = "I wish Politician A was in office.";
+	discussionList3 = [str00, str01, str02];
+} else if (discussion2 === 2) {
+	var str00 = "Did you hear what Celebrity A said?";
+	var str01 = "What do you think about Celebrity A?";
+	var str02 = "I am in love with Celebrity A!";
+	var str03 = "Celebrity A can have my babies!";
+	discussionList3 = [str00, str01, str02, str03];
+} else if (discussion2 === 3) {
+	var str00 = "Did you see the new movie Movie A?";
+	var str01 = "Movie A was soooo good!";
+	var str02 = "I want to go see Movie A!";
+	var str03 = "What do you think about the new movie Movie A?";
+	discussionList3 = [str00, str01, str02, str03];
+} else if (discussion2 === 4) {
+	var str00 = "Did you see the series finale of TV Show A?";
+	var str01 = "The series finale of TV Show A was amazing!";
+	var str02 = "The series finale of TV Show A was such a letdown!";
+	var str03 = "Are you going to watch the series finale of TV Show A tonight?";
+	discussionList3 = [str00, str01, str02, str03];
+} else if (discussion2 === 5) {
+	var str00 = "Did you read the new book by Author A?";
+	var str01 = "What do you think about Book A?";
+	var str02 = "I can't stop reading Book A!";
+	var str03 = "Please don't give me any spoilers about Book A!";
+	var str04 = "I think Book B is wayyyy better than Book A...";
+	discussionList3 = [str00, str01, str02, str03, str04];
+} else if (discussion2 === 6) {
+	var str00 = "Team A won!";
+	var str01 = "Team A should've won!";
+	var str02 = "Team B destroyed Team A!";
+	var str03 = "Team B could kick Team A's butt!, Are you a Team A fan?";
+	var str04 = "You'd better not be a Team A fan!";
+	discussionList3 = [str00, str01, str02, str03, str04];
+} else if (discussion2 === 7) {
+	var str00 = "Have you tried the new Food A from Store A?";
+	var str01 = "The new Food A from Store A is soooo good!";
+	var str02 = "You HAVE to try the new Food A from Store A!";
+	var str03 = "Are you a fan of Food A?";
+	var str04 = "The new Food A is Ingredient A free!";
+	discussionList3 = [str00, str01, str02, str03, str04];
+} else {
+	discussionList3 = ["Cool!"];
+}
+// Component 2.3: The Question Generating Function
+function questionGenerator(questionTopic) {
+
+var discussionList03;
+
+if (questionTopic === 0) {
+	var str00 = "Are you enjoying the weather lately?";
+	var str01 = "How about the weather these days, eh?";
+	var str02 = "This weather is bumming me out!";
+	var str03 = "I wish it was warmer!";
+	var str04 = "I wish it wasn't so hot!";
+	
+	discussionList03 = [str00, str01, str02, str03, str04];
+} else if (questionTopic === 1) {
+	var str00 = "Politician A is an idiot!";
+	var str01 = "What's your opinion on Politician A?";
+	var str02 = "I wish Politician A was in office.";
+	discussionList03 = [str00, str01, str02];
+} else if (questionTopic === 2) {
+	var str00 = "Did you hear what Celebrity A said?";
+	var str01 = "What do you think about Celebrity A?";
+	var str02 = "I am in love with Celebrity A!";
+	var str03 = "Celebrity A can have my babies!";
+	discussionList03 = [str00, str01, str02, str03];
+} else if (questionTopic === 3) {
+	var str00 = "Did you see the new movie Movie A?";
+	var str01 = "Movie A was soooo good!";
+	var str02 = "I want to go see Movie A!";
+	var str03 = "What do you think about the new movie Movie A?";
+	discussionList03 = [str00, str01, str02, str03];
+} else if (questionTopic === 4) {
+	var str00 = "Did you see the series finale of TV Show A?";
+	var str01 = "The series finale of TV Show A was amazing!";
+	var str02 = "The series finale of TV Show A was such a letdown!";
+	var str03 = "Are you going to watch the series finale of TV Show A tonight?";
+	discussionList03 = [str00, str01, str02, str03];
+} else if (questionTopic === 5) {
+	var str00 = "Did you read the new book by Author A?";
+	var str01 = "What do you think about Book A?";
+	var str02 = "I can't stop reading Book A!";
+	var str03 = "Please don't give me any spoilers about Book A!";
+	var str04 = "I think Book B is wayyyy better than Book A...";
+	discussionList03 = [str00, str01, str02, str03, str04];
+} else if (questionTopic === 6) {
+	var str00 = "Team A won!";
+	var str01 = "Team A should've won!";
+	var str02 = "Team B destroyed Team A!";
+	var str03 = "Team B could kick Team A's butt!, Are you a Team A fan?";
+	var str04 = "You'd better not be a Team A fan!";
+	discussionList03 = [str00, str01, str02, str03, str04];
+} else if (questionTopic === 7) {
+	var str00 = "Have you tried the new Food A from Store A?";
+	var str01 = "The new Food A from Store A is soooo good!";
+	var str02 = "You HAVE to try the new Food A from Store A!";
+	var str03 = "Are you a fan of Food A?";
+	var str04 = "The new Food A is Ingredient A free!";
+	discussionList03 = [str00, str01, str02, str03, str04];
+} else {
+	discussionList03 = ["Cool!"];
+}
+
+return discussionList03;
+
+}
+// Component 2.4: Response Generating Function
+function responseGenerator(responseTopic) {
+
+var discussionList02;
+
+if (responseTopic === 0) {
+	var str00 = "The weather has been pretty nice in my opinion.";
+	var str01 = "The weather has been better in past years.";
+	var str02 = "I just wish it didn't rain so much!";
+	var str03 = "I can't wait for summer already!";
+	var str04 = "I might invest in a humidifier.";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 1) {
+	var str00 = "Did you vote for Politician A?";
+	var str01 = "I think Politician A is a liar!";
+	var str02 = "I wouldn't trust Politician A for a second!";
+	var str03 = "I hope Politician A doesn't get a second term in office!";
+	var str04 = "Taxes are too high!";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 2) {
+	var str00 = "Celebrity A and Celebrity B are getting married!";
+	var str01 = "Celebrity A just had a baby!";
+	var str02 = "Celebrity A is so much better than Celebrity B!";
+	var str03 = "I only liked Celebrity A in Movie A";
+	var str04 = "Celebrity A is annoying!"
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 3) {
+	var str00 = "Movie A was awesome!";
+	var str01 = "I'm going to see Movie A again!";
+	var str02 = "I saw Movie A with my friend!";
+	var str03 = "What's Movie A?";
+	var str04 = "Ew, Actor A is in Movie A!";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 4) {
+	var str00 = "I heard that Celebrity A watched Dictator A speeches for inspiration";
+	var str01 = "There are way too many plotholes left unanswered in the series finale of TV Show A";
+	var str02 = "I honestly don't know what to do with my life now that TV Show A has ended";
+	var str03 = "I didn't watch a single episode of TV Show A";
+	var str04 = "TV Show B is a lot better than TV Show A";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 5) {
+	var str00 = "Book A was definitely better than the movie!";
+	var str01 = "Main Character A dies in Book A.";
+	var str02 = "Book B is a cheap ripoff of Book C!";
+	var str03 = "I'm still reading book A";
+	var str04 = "I think Book A took a long time on character development before actually getting to the good parts, but it was well worth wait.";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 6) {
+	var str00 = "I'm gonna go watch Team A with some friends.";
+	var str01 = "Honestly I'm more of a Team C fan.";
+	var str02 = "I hope Team A makes it to the playoffs!";
+	var str03 = "I can't remember the last time Time A won the Contest A";
+	var str04 = "I'm from City A so I'm more of a Team C fan.";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else if (responseTopic === 7) {
+	var str00 = "The new Food A tastes gross!";
+	var str01 = "Food A just doesn't taste the same without Ingredient A!";
+	var str02 = "I'm craving Food B, Food C, and some Food D!";
+	var str03 = "Store B sells Food B, which is basically Food A but healthier and cheaper";
+	var str04 = "I've never been a fan of Food A.";
+	discussionList02 = [str00, str01, str02, str03, str04];
+} else {
+	discussionList02 = ["Cool!"];
+}
+
+return discussionList02;
+
+}
+// CONVERSATION GENERATOR
+// This is the very last step in the javascript,
+// that generates the entire conversation.
+//
+// This code generates the first greeting
+var greetingListLength = greetingList.length;
+var randomGreeting = Math.floor(Math.random() * greetingListLength);
+var randomGreetingText = greetingList[randomGreeting];
+// This code generates the first response
+var responseListLength = responseList.length;
+var randomResponse = Math.floor(Math.random() * responseListLength);
+var randomResponseText = responseList[randomResponse];
+// This code generates the first discussion
+var var000 = discussionList.length;
+var var001 = Math.floor(Math.random() * var000);
+var var002 = discussionList[var001];
+// This code generates the first discussion 
+// response
+var var010 = discussionList2.length;
+var var011 = Math.floor(Math.random() * var010);
+var var012 = discussionList2[var011];
+// This code generates the second discussion
+var discussionList003 = questionGenerator(discussion2);
+var var020 = discussionList003.length;
+var var021 = Math.floor(Math.random() * var020);
+var var022 = discussionList003[var021];
+// This code generates the second discussion 
+// response
+var discussionList004 = responseGenerator(discussion2);
+var var030 = discussionList004.length;
+var var031 = Math.floor(Math.random() * var030);
+var var032 = discussionList004[var031];
+// Question Text Generator Function
+function questionText(qTopic) {
+
+var questionArray = questionGenerator(qTopic);
+var var0020 = questionArray.length;
+var var0021 = Math.floor(Math.random() * var0020);
+var var0022 = questionArray[var0021];
+
+return var0022;
+
+}
+// Response Text Generator Function
+function responseText(rTopic) {
+
+var responseArray = responseGenerator(rTopic);
+var var0030 = responseArray.length;
+var var0031 = Math.floor(Math.random() * var0030);
+var var0032 = responseArray[var0031];
+
+return var0032;
+
+}
+// This code generates the third discussion
+var discussion3 = Math.floor(Math.random() * 8);
+var030 = questionText(discussion3);
+var031 = responseText(discussion3);
+// This code generates the fourth discussion
+var discussion4 = Math.floor(Math.random() * 8);
+var040 = questionText(discussion3);
+var041 = responseText(discussion3);
+// Component 11: Goodbye
+// Standard Goodbye Variations (formal):
+// I have to go! Talk to you later!, I'm late for // work! See you around!, My mom's calling me, I 
+// have to take this call!, Oh look! The bus is // //here! Catch you around!, I'm running late for //work! //I'd love to talk to you some other time! Maybe on //the weekend?
+// Standard Goodbye Variations (colloquial):
+// Alright dude, it's been swell! I have to // //bounce!, It's nice to finally catch up! Catch // //you on the flip side!, I gotta go man! I have // //class!, My phone's dying! I'll call you back!, 
+// It's getting late. I'll talk to you tomorrow!
+// Standard Goodbye Variations (servant):
+// I'm sorry to displease you master, but I must 
+// use the little boy's room!
+var goodbyeList;
+if (greetingType === 0) {
+	var str00 = "I have to go! Talk to you later!";
+	var str01 = "I'm late for work! See you around!";
+	var str02 = "My mom's calling me, I have to take this call!";
+	var str03 = "Oh look! The bus is here! Catch you around!";
+	var str04 = "I'm running late for work! I'd love to talk to you some other time! Maybe on the weekend?"
+	goodbyeList = [str00, str01, str02, str03, str04];
+} else if (greetingType === 1) {
+	var str00 = "Alright dude, it's been swell! I have to bounce!";
+	var str01 = "It's nice to finally catch up! Catch you on the flip side!";
+	var str02 = "I gotta go man! I have class!";
+	var str03 = "My phone's dying! I'll call you back!";
+	var str04 = "It's getting late. I'll talk to you tomorrow!";
+	goodbyeList = [str00, str01, str02, str03, str04];
+} else {
+	var str00 = "I'm sorry to displease you master, but I must use the little boy's room!";
+	goodbyeList = [str00];
+}
+// Component 11.1: Goodbye Response
+// Standard Response Variations (formal):
+// "I have stuff to do anyways. Later!"
+// "Have fun! Enjoy! Toodles!"
+// "Hopefully I'll bump into you again!"
+// "We should this more often! It was fun!"
+// "Well, time never stops! Hehe. See ya!"
+// Standard Response Variations (colloquial):
+// "You do what you gotta do! I'll be around!"
+// "Time went by fast! Hopefully we will meet // // // again!"
+// "I can't believe I don't talk to you more often! 
+// Cheers dude!"
+// "Catch ya later alligator!"
+// "Stay a while crocodile!"
+// Standard Response Variations (servant):
+// "Godspeed my knave!"
+var goodbyeResponse;
+if (greetingType === 0) {
+	var str00 = "I have stuff to do anyways. Later!";
+	var str01 = "Have fun! Enjoy! Toodles!";
+	var str02 = "Hopefully I'll bump into you again!";
+	var str03 = "We should this more often! It was fun!";
+	var str04 = "Well, time never stops! Hehe. See ya!";
+	
+	goodbyeResponse = [str00, str01, str02, str03, str04];
+} else if (greetingType === 1) {
+	var str00 = "You do what you gotta do! I'll be around!";
+	var str01 = "Time went by fast! Hopefully we will meet again!";
+	var str02 = "I can't believe I don't talk to you more often! Cheers dude!";
+	var str03 = "Catch ya later alligator!";
+	var str04 = "Stay a while crocodile!";
+
+	goodbyeResponse = [str00, str01, str02, str03, str04];
+} else if (greetingType === 2) {
+	var str00 = "Godspeed my knave!";
+
+	goodbyeResponse = [str00];
+} else {
+	goodbyeResponse = ["Bye!"];
+}
+// This code generates the first goodbye
+var goodbyeListLength = goodbyeList.length;
+var randomGoodbye = Math.floor(Math.random() * goodbyeListLength);
+var randomGoodbyeText = goodbyeList[randomGoodbye];
+// Goodbye Text Generator
+function byeTextGen(byeArray) {
+	var byeLength = byeArray.length;
+	var randBye = Math.floor(Math.random() * byeLength);
+	var byeText0 = byeArray[randBye];
+
+	return byeText0;
+
+}
+// This code generates the second goodbye
+var bye001 = byeTextGen(goodbyeResponse);
+// This code generates the text for the entire 
+// conversation.
+var convoStr = "Person A: " + randomGreetingText;
+convoStr += "<br>Person B: " + randomResponseText;
+convoStr += "<br>Person A: " + var002;
+convoStr += "<br>Person B: " + var012;
+convoStr += "<br>Person B: " + var022;
+convoStr += "<br>Person A: " + var032;
+convoStr += "<br>Person A: " + var030;
+convoStr += "<br>Person B: " + var031;
+convoStr += "<br>Person B: " + var040;
+convoStr += "<br>Person A: " + var041;
+convoStr += "<br>Person A: " + randomGoodbyeText;
+convoStr += "<br>Person B: " + bye001;
+document.getElementById("convoText").innerHTML = convoStr;
+</script>
+
+</body>
+</html>
